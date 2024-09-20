@@ -42,34 +42,40 @@ const Home = () => {
 
 
   return (
-      <div className="max-w-4xl mx-auto">
-        <Stepper
-            activeStep={activeStep}
-            isLastStep={(value) => setIsLastStep(value)}
-            isFirstStep={(value) => setIsFirstStep(value)}
-        >
-          <Step onClick={() => setActiveStep(0)}>
-            {/*<HomeIcon className="h-5 w-5" />*/}
-            1
-          </Step>
-          <Step onClick={() => setActiveStep(1)}>
-            {/*<UserIcon className="h-5 w-5" />*/}
-            2
-          </Step>
-          <Step onClick={() => setActiveStep(2)}>
-            {/*<CogIcon className="h-5 w-5" />*/}
-            3
-          </Step>
-        </Stepper>
-        <div className="p-8">
-          {activeComponent}
+      <div className="flex flex-col">
+        <div className="flex justify-center p-8">
+            <Stepper
+                activeStep={activeStep}
+                isLastStep={(value) => setIsLastStep(value)}
+                isFirstStep={(value) => setIsFirstStep(value)}
+                className="md:w-8/12"
+            >
+                <Step onClick={() => setActiveStep(0)}>
+                    {/*<HomeIcon className="h-5 w-5" />*/}
+                    1
+                </Step>
+                <Step onClick={() => setActiveStep(1)}>
+                    {/*<UserIcon className="h-5 w-5" />*/}
+                    2
+                </Step>
+                <Step onClick={() => setActiveStep(2)}>
+                    {/*<CogIcon className="h-5 w-5" />*/}
+                    3
+                </Step>
+            </Stepper>
         </div>
-        <div className="mt-16 flex justify-between">
-          <Button onClick={handlePrev} disabled={isFirstStep}>
-            Back
-          </Button>
-          <Button onClick={handleNext} disabled={isLastStep}>
-            {!isLastStep ? "Next" : "Create a plan"}
+          {activeComponent}
+        <div className="flex justify-center">
+            {
+                !isFirstStep ? (
+                    <Button onClick={handlePrev} disabled={isFirstStep} size="lg">
+                        Back
+                    </Button>
+                ) : null
+            }
+
+          <Button onClick={handleNext} disabled={isLastStep} size="lg">
+            {!isLastStep ? "Next" : "Let's go!"}
           </Button>
         </div>
       </div>

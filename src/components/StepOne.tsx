@@ -1,7 +1,8 @@
 import React, {ChangeEvent } from "react";
-import {Card,Input, Typography} from "@material-tailwind/react";
+import {Input, Typography} from "@material-tailwind/react";
 import {useTypewriter} from "react-simple-typewriter";
-
+import Lottie from "lottie-react";
+import travelWalk from "../assets/travel-walk.json";
 
 export interface StepProps {
   changeActiveStep: (step: number) => void;
@@ -20,20 +21,20 @@ const StepperOne = ({destination, setDestination}) => {
     })
 
     return (
-        <div className="mb-1 flex flex-col gap-6">
-          <Card color="transparent" shadow={false}>
-            <Typography variant="h1" color="blue-gray" className="text-center">
-              Where are you traveling?
-            </Typography>
-            <Input
-                size="lg"
-                variant="static"
-                placeholder={text}
-                className="text-center"
-                defaultValue={destination}
-                onChange={handleInputChange}
-            />
-          </Card>
+        <div className="flex flex-col items-center">
+            <div className="flex flex-col">
+                <Typography variant="h1" color="blue-gray" className="text-center">
+                  Where are you traveling?
+                </Typography>
+                <Input
+                    variant="static"
+                    placeholder={text}
+                    className="text-center text-xl"
+                    defaultValue={destination}
+                    onChange={handleInputChange}
+                />
+            </div>
+            <Lottie animationData={travelWalk} className="md:size-4/5 lg:size-5/6 xl:size-5/12" />
         </div>
     );
 };
