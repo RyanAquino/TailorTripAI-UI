@@ -1,8 +1,12 @@
-import {useMemo, useState} from "react";
+import React, {useMemo, useState} from "react";
 import StepOne from "../components/StepOne.tsx";
 import StepTwo from "../components/StepTwo.tsx";
 import StepThree from "../components/StepThree.tsx";
 import { Stepper, Step, Button } from "@material-tailwind/react";
+import navigate from "../assets/navigate.json";
+import calendar from "../assets/calendar-icon.json";
+import tag from "../assets/tag-icon.json";
+import Lottie from "lottie-react";
 
 const Home = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -43,24 +47,30 @@ const Home = () => {
 
   return (
       <div className="flex flex-col">
-        <div className="flex justify-center p-8">
+        <div className="flex justify-center p-6 pb-0">
             <Stepper
                 activeStep={activeStep}
                 isLastStep={(value) => setIsLastStep(value)}
                 isFirstStep={(value) => setIsFirstStep(value)}
                 className="md:w-8/12"
             >
-                <Step onClick={() => setActiveStep(0)}>
-                    {/*<HomeIcon className="h-5 w-5" />*/}
-                    1
+                <Step onClick={() => setActiveStep(0)} className="w-24 h-24 cursor-pointer" style={{ background: 'none' }}>
+                    <Lottie
+                        loop={false}
+                        animationData={navigate}
+                    />
                 </Step>
-                <Step onClick={() => setActiveStep(1)}>
-                    {/*<UserIcon className="h-5 w-5" />*/}
-                    2
+                <Step onClick={() => setActiveStep(1)} className="w-16 h-16 cursor-pointer" style={{ background: 'none' }}>
+                    <Lottie
+                        loop={activeStep === 1}
+                        animationData={calendar}
+                    />
                 </Step>
-                <Step onClick={() => setActiveStep(2)}>
-                    {/*<CogIcon className="h-5 w-5" />*/}
-                    3
+                <Step onClick={() => setActiveStep(2)} className="w-20 h-20 cursor-pointer" style={{ background: 'none' }}>
+                    <Lottie
+                        loop={activeStep === 2}
+                        animationData={tag}
+                    />
                 </Step>
             </Stepper>
         </div>
