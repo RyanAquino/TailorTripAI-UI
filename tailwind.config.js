@@ -9,6 +9,6 @@ import withMT from "@material-tailwind/react/utils/withMT";
       theme: {
         extend: {},
       },
-      plugins: [],
+      plugins: ["prettier-plugin-tailwindcss"],
     }
 )
