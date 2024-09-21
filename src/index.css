@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    /* Target elements with the data-first-in-range attribute */
+    /*[data-first-in-range] {*/
+    /*    color: red; !* Or any other Tailwind class equivalent *!*/
+    /*}*/
+}

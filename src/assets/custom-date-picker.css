@@ -1,0 +1,49 @@
+/*.day {*/
+/*    &[data-selected], &[data-selected]:hover {*/
+/*        background-color: blue;*/
+/*        color: white;*/
+/*    }*/
+
+/*    &[data-in-range], &[data-in-range]:hover {*/
+/*        background-color: yellow;*/
+/*        color: white;*/
+/*    }*/
+
+/*    &[data-first-in-range], &[data-first-in-range]:hover {*/
+/*        background-color: green;*/
+/*        color: white;*/
+/*    }*/
+/*    &[data-last-in-range], &[data-last-in-range]:hover {*/
+/*        background-color: red;*/
+/*        color: white;*/
+/*    }*/
+/*}*/
+
+.date-picker {
+    width: 100%; /* Full width */
+    border: 1px solid #d1d5db; /* Replace with the appropriate gray color */
+    border-radius: 0.375rem; /* Tailwind rounded-md */
+    padding: 0.5rem; /* Tailwind p-2 */
+    background-color: white; /* White background */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Small shadow */
+
+    &[data-selected], &[data-selected]:hover {
+        background-color: #263238;
+        color: white;
+    }
+}
+
+.date-picker:focus-within {
+    border-color: #3b82f6; /* Replace with the appropriate blue color */
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5); /* Focus shadow */
+}
+
+.date-picker-input {
+    padding: 0.5rem; /* Tailwind p-2 */
+    font-size: 1rem; /* Replace with the appropriate medium font size */
+    color: #374151; /* Dark text color */
+}
+
+.date-picker-input::placeholder {
+    color: #9ca3af; /* Placeholder color */
+}

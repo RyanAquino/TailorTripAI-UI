@@ -14,27 +14,30 @@ const StepperOne = ({destination, setDestination}) => {
     }
 
     const [text] =  useTypewriter({
-        words: ["United States", "Spain", "United Kingdom", "France", "Italy", "Turkey", "Australia", "Canada", "Japan", "Philippines"],
+        words: ["Philippines", "United States", "Spain", "United Kingdom", "France", "Italy", "Turkey", "Australia", "Canada", "Japan"],
         loop: 0,
         typeSpeed: 40,
         deleteSpeed: 20,
     })
 
     return (
-        <div className="flex flex-col items-center">
-            <div className="flex flex-col">
+        <div className="flex flex-col items-center space-y-2">
+            <div className="flex flex-col justify-center">
                 <Typography variant="h1" color="blue-gray" className="text-center">
-                  Where are you traveling?
+                    Where are you traveling to?
                 </Typography>
-                <Input
-                    variant="static"
-                    placeholder={text}
-                    className="text-center text-xl"
-                    defaultValue={destination}
-                    onChange={handleInputChange}
-                />
+
+                <div className="flex flex-col justify-center px-14">
+                    <Input
+                        variant="static"
+                        placeholder={text}
+                        className="text-center text-xl"
+                        defaultValue={destination}
+                        onChange={handleInputChange}
+                    />
+                </div>
             </div>
-            <Lottie animationData={travelWalk} className="md:size-4/5 lg:size-5/6 xl:size-5/12" />
+            <Lottie animationData={travelWalk} className="sm:size-4/5 md:size-4/5 lg:size-5/12"/>
         </div>
     );
 };
