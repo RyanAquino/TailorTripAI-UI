@@ -7,7 +7,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import '../assets/custom-date-picker.css'
 
 
-const StepperTwo = ({range, onDateChange, handlePrev, generateTagsHandler, lastPageValid}) => {
+const StepperTwo = ({range, onDateChange, handlePrev, generateTagsHandler, lastPageValid, activeStep}) => {
     const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
 
     return (
@@ -29,7 +29,7 @@ const StepperTwo = ({range, onDateChange, handlePrev, generateTagsHandler, lastP
             </div>
             <div className="flex flex-col justify-center items-center space-y-2 py-6">
                 <div>
-                    <Button onClick={generateTagsHandler} disabled={!lastPageValid} size="lg" className="px-32" variant="filled">
+                    <Button onClick={() => generateTagsHandler(activeStep+1)} disabled={!lastPageValid} size="lg" className="px-32" variant="filled">
                         Next
                     </Button>
                 </div>

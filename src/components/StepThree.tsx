@@ -34,31 +34,11 @@ const StepperThree = ({handlePrev, tags}) => {
                   </Typography>
               </div>
               <div className="grid grid-cols-4 gap-2 md:gap-2 lg:gap-3 py-6 px-2">
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 2</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 3</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 4</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 5</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
-                  <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags}>Button 1</Button>
+                  {
+                      tags.map((tag: string) => (
+                          <Button color={undefined} variant="outlined" size="md" onClick={onSelectTags} key={tag}>${tag}</Button>
+                      ))
+                  }
               </div>
           </div>
           <div className="flex flex-col justify-center items-center space-y-2 py-6">
