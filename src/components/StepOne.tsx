@@ -8,7 +8,7 @@ export interface StepProps {
   changeActiveStep: (step: number) => void;
 }
 
-const StepperOne = ({destination, setDestination, handleNext, handlePrev, isFirstStep, isLastStep}) => {
+const StepperOne = ({destination, setDestination, activeStep, setActiveStep}) => {
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setDestination(event.target.value);
     }
@@ -19,6 +19,16 @@ const StepperOne = ({destination, setDestination, handleNext, handlePrev, isFirs
         typeSpeed: 40,
         deleteSpeed: 20,
     })
+
+    const handleNext = () => {
+        setActiveStep(activeStep + 1);
+    }
+
+    const handleEnter = (e) => {
+        if (e.key === "Enter") {
+            setActiveStep(activeStep + 1);
+        }
+    }
 
     return (
         <>
@@ -35,25 +45,16 @@ const StepperOne = ({destination, setDestination, handleNext, handlePrev, isFirs
                             className="text-center text-xl"
                             defaultValue={destination}
                             onChange={handleInputChange}
+                            onKeyPress={handleEnter}
                         />
                     </div>
                 </div>
                 <Lottie animationData={travelWalk} className="sm:size-4/5 md:size-4/5 lg:size-5/12"/>
             </div>
             <div className="flex justify-center py-4">
-                <Button onClick={handleNext} disabled={isLastStep} size="lg" className="px-32" variant="filled">
-                    {!isLastStep ? "Next" : "Let's go!"}
+                <Button onClick={handleNext} disabled={destination === undefined || destination === ""} size="lg" className="px-32" variant="filled">
+                    Next
                 </Button>
-            </div>
-            <div className="flex justify-center">
-                {
-                    !isFirstStep ? (
-                        <Button onClick={handlePrev} disabled={isFirstStep} size="md" className="px-32"
-                                variant="outlined">
-                            Back
-                        </Button>
-                    ) : null
-                }
             </div>
         </>
 
