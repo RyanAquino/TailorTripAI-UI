@@ -13,10 +13,13 @@ import { getTags } from "../services/retrieveTags.ts";
 const Home = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [destination, setDestination] = useState(undefined);
+  const [address, setAddress] = useState(undefined);
   const [range, setRange] = useState([null, null]);
   const lastPageValid =
     destination !== undefined &&
     destination !== "" &&
+    address !== undefined &&
+    address !== "" &&
     !(range[0] === null || range[1] === null);
   const [tags, setTags] = useState<string[]>([]);
 
@@ -73,6 +76,8 @@ const Home = () => {
             range={range}
             onDateChange={onDateChange}
             handlePrev={handlePrev}
+            address={address}
+            setAddress={setAddress}
             generateTagsHandler={secondStepHandler}
             lastPageValid={lastPageValid}
             activeStep={activeStep}
@@ -85,7 +90,15 @@ const Home = () => {
         component: <StepThree handlePrev={handlePrev} tags={tags} />,
       },
     ];
-  }, [destination, activeStep, range, lastPageValid, tags, secondStepHandler]);
+  }, [
+    address,
+    destination,
+    activeStep,
+    range,
+    lastPageValid,
+    tags,
+    secondStepHandler,
+  ]);
 
   const activeComponent = useMemo(
     () => steps.find(({ value }) => value === activeStep)?.component || null,
