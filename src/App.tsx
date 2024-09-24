@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Scheduler from "./pages/Scheduler.tsx";
+import SchedulerPage from "./pages/Scheduler.tsx";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/scheduler" element={<Scheduler />} />
+        <Route path="/scheduler" element={<SchedulerPage />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </>
