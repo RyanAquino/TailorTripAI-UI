@@ -6,6 +6,7 @@ import { em } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import "../assets/custom-date-picker.css";
 import { StandaloneSearchBox, useJsApiLoader } from "@react-google-maps/api";
+import { CircularProgress } from "@mui/material";
 
 const StepperTwo = ({
   range,
@@ -38,6 +39,16 @@ const StepperTwo = ({
         <Typography variant="h1" color="blue-gray" className="text-center">
           Tell us when you're traveling
         </Typography>
+        <DatePicker
+          type="range"
+          value={range}
+          onChange={onDateChange}
+          classNames={{
+            day: "date-picker",
+          }}
+          minDate={new Date()}
+          size={isMobile ? "md" : "xl"}
+        />
         {isLoaded ? (
           <div className="flex flex-col justify-center px-14">
             <StandaloneSearchBox
@@ -52,17 +63,11 @@ const StepperTwo = ({
               />
             </StandaloneSearchBox>
           </div>
-        ) : null}
-        <DatePicker
-          type="range"
-          value={range}
-          onChange={onDateChange}
-          classNames={{
-            day: "date-picker",
-          }}
-          minDate={new Date()}
-          size={isMobile ? "md" : "xl"}
-        />
+        ) : (
+          <div className="flex pt-5">
+            <CircularProgress />
+          </div>
+        )}
       </div>
       <div className="flex flex-col justify-center items-center space-y-2 py-6">
         <div>

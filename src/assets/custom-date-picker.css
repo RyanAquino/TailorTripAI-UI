@@ -1,4 +1,4 @@
-/*.day {*/
+/*.date-picker {*/
 /*    &[data-selected], &[data-selected]:hover {*/
 /*        background-color: blue;*/
 /*        color: white;*/
@@ -29,20 +29,26 @@
 
   &[data-selected],
   &[data-selected]:hover {
+    background-color: #b0bec5;
+    color: white;
+  }
+
+  &[data-in-range],
+  &[data-in-range]:hover {
+    background-color: #b0bec5;
+    color: white;
+  }
+
+  &[data-first-in-range],
+  &[data-first-in-range]:hover {
     background-color: #263238;
     color: white;
   }
-}
-
-.date-picker:focus-within {
-  border-color: #3b82f6; /* Replace with the appropriate blue color */
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5); /* Focus shadow */
-}
-
-.date-picker-input {
-  padding: 0.5rem; /* Tailwind p-2 */
-  font-size: 1rem; /* Replace with the appropriate medium font size */
-  color: #374151; /* Dark text color */
+  &[data-last-in-range],
+  &[data-last-in-range]:hover {
+    background-color: #263238;
+    color: white;
+  }
 }
 
 .date-picker-input::placeholder {

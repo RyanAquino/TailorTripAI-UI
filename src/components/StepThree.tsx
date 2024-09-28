@@ -2,13 +2,19 @@ import { Button, Typography } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import loadingTags from "../assets/loading-tags.json";
 import Lottie from "lottie-react";
+import { useNavigate } from "react-router-dom";
+import { generateSchedule } from "../services/generateSchedule.ts";
+import { Backdrop } from "@mui/material";
+import loadingMarker from "../assets/loading-routing.json";
 
 export interface StepProps {
   changeActiveStep: (step: number) => void;
 }
 
-const StepperThree = ({ handlePrev, tags }) => {
+const StepperThree = ({ handlePrev, tags, destination, address, range }) => {
   const [userTags, setUserTags] = useState([false]);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setUserTags(Array(tags.length).fill(false));
@@ -21,11 +27,26 @@ const StepperThree = ({ handlePrev, tags }) => {
   };
 
   const processInput = () => {
+    setLoading(true);
     const selectedTags = [];
     userTags.forEach((selected, idx) => {
       if (selected) {
         selectedTags.push(tags[idx]);
       }
+    });
+    const [fromDate, toDate] = range;
+
+    const fetchSchedule = async () =>
+      await generateSchedule({
+        tags: selectedTags,
+        fromDate: fromDate,
+        toDate: toDate,
+        travelDestination: destination,
+        homeLocation: address,
+      });
+    fetchSchedule().then((data) => {
+      setLoading(false);
+      navigate("/scheduler", { state: { schedulerData: data["data"] } });
     });
   };
 
@@ -65,6 +86,7 @@ const StepperThree = ({ handlePrev, tags }) => {
             size="lg"
             className="px-28"
             variant="filled"
+            disabled={!userTags.includes(true)}
           >
             Let's Go!
           </Button>
@@ -80,6 +102,15 @@ const StepperThree = ({ handlePrev, tags }) => {
           </Button>
         </div>
       </div>
+      <Backdrop
+        sx={(theme) => ({ color: "#fff", zIndex: theme.zIndex.drawer + 1 })}
+        open={loading}
+      >
+        <Lottie
+          animationData={loadingMarker}
+          className="sm:size-4/5 md:size-4/5 lg:size-5/12"
+        />
+      </Backdrop>
     </>
   );
 };

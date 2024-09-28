@@ -87,7 +87,15 @@ const Home = () => {
       {
         label: "Step 3",
         value: 2,
-        component: <StepThree handlePrev={handlePrev} tags={tags} />,
+        component: (
+          <StepThree
+            handlePrev={handlePrev}
+            tags={tags}
+            destination={destination}
+            address={address}
+            range={range}
+          />
+        ),
       },
     ];
   }, [
